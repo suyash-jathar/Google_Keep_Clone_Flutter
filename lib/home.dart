@@ -60,9 +60,9 @@ class _HomeState extends State<Home> {
 // Future deleteNote(Note note) async{
 //   await NotesDatabase.instance.deleteNote(note);
 // }
-  Future deleteOneNote(int id) async {
-    await NotesDatabase.instance.deleteNote(id);
-  }
+  // Future deleteOneNote(int id) async {
+  //   await NotesDatabase.instance.deleteNote(id);
+  // }
 
   @override
   Widget build(BuildContext context) {

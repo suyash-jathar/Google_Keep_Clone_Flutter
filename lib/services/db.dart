@@ -99,9 +99,9 @@ class NotesDatabase {
     final db = await instance.database;
     return await db!.delete(NotesImpName.TableName, where: '${NotesImpName.id}=?', whereArgs: [note.id]);
   }
-  Future deleteNote(int id) async {
+  Future deleteNote(Note? note) async {
     final db = await instance.database;
-    return await db!.delete(NotesImpName.TableName, where: '${NotesImpName.id}=?', whereArgs: [id]);
+    return await db!.delete(NotesImpName.TableName, where: '${NotesImpName.id}=?', whereArgs: [note!.id]);
   }
 
   Future closeDB()async{
