@@ -31,7 +31,7 @@ class _CreateNoteViewState extends State<CreateNoteView> {
           IconButton(
               splashRadius: 18,
               onPressed: () async{
-                await NotesDatabase.instance.InsertEntry(Note(title:title.text, content:content.text, createdTime: DateTime.now(), pin: false));
+                await NotesDatabase.instance.InsertEntry(Note(title:title.text, content:content.text, createdTime: DateTime.now(), pin: false,isArchieve: false));
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
               },
               icon: Icon(Icons.save_outlined))

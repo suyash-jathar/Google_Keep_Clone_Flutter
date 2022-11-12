@@ -36,7 +36,7 @@ class _EditNoteViewState extends State<EditNoteView> {
           IconButton(
               splashRadius: 18,
               onPressed: () async{
-                 Note newNote=Note(content: editableContent,title: editableTitle,pin: false  ,createdTime: widget.note.createdTime,id: widget.note.id);
+                 Note newNote=Note(content: editableContent,title: editableTitle,pin: widget.note.pin  ,createdTime: widget.note.createdTime,isArchieve: widget.note.isArchieve,id: widget.note.id);
                  await NotesDatabase.instance.updateNotes(newNote);
                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
 

@@ -29,6 +29,7 @@ class NotesDatabase {
     CREATE TABLE Notes(
       ${NotesImpName.id} $idType,
       ${NotesImpName.pin} $boolType,
+      ${NotesImpName.isArchieve} $boolType,
       ${NotesImpName.title} $textType,
       ${NotesImpName.content} $textType,
       ${NotesImpName.createdTime} $textType
@@ -78,6 +79,25 @@ class NotesDatabase {
       where: '${NotesImpName.id}==?',
       whereArgs: [note.id],
     );
+  }
+
+  Future pinNote(Note? note)async{
+    final db=await instance.database;
+    return await db!.update(
+      NotesImpName.TableName, 
+      {NotesImpName.pin:!note!.pin?1:0},
+      where: '${NotesImpName.id}==?',
+      whereArgs: [note.id],
+      );
+  }
+  Future archieveNote(Note? note)async{
+    final db=await instance.database;
+    return await db!.update(
+      NotesImpName.TableName, 
+      {NotesImpName.isArchieve:!note!.isArchieve?1:0},
+      where: '${NotesImpName.id}==?',
+      whereArgs: [note.id],
+      );
   }
 
   Future<List<int>> getNoteString(String query) async

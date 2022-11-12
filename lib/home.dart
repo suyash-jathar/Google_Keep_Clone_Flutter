@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
     createEntry(Note(
         id: 1,
         pin: false,
+        isArchieve: false,
         title: "CODE WITH YASH",
         content: "Learning  Flutter with Suyash",
         createdTime: DateTime.now()));
@@ -244,6 +245,7 @@ class _HomeState extends State<Home> {
                       MaterialPageRoute(
                           builder: (context) => NoteView(
                                 note: notesList[index],
+                                
                               )));
                 },
                 child: Container(
@@ -274,6 +276,93 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+  Widget NotePinSectionAll() {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              notesList.length==1?
+              Text(
+                "Pin",
+                style: TextStyle(
+                    color: white.withOpacity(0.5),
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
+              ):
+              Text(
+                "No Pin",
+                style: TextStyle(
+                    color: white.withOpacity(0.5),
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold),
+              )
+
+            ],
+          ),
+        ),
+        
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          child: StaggeredGridView.countBuilder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: notesList.length,
+            crossAxisCount: 4,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            staggeredTileBuilder: (index) => StaggeredTile.fit(2),
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NoteView(
+                                note: notesList[index],
+                              )));
+                },
+                child: notesList[index].pin==1?
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: white.withOpacity(0.4)),
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: 
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        notesList[index].title,
+                        style: TextStyle(
+                            color: white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        notesList[index].content.length > 250
+                            ? '${note.substring(0, 250)}....'
+                            : notesList[index].content,
+                        style: TextStyle(color: white),
+                      ),
+                    ],
+                  )
+                ):
+                Container()
               );
             },
           ),

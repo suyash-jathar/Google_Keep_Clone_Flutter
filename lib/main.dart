@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import './home.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 void main() {
   runApp(const MyApp());
 }
