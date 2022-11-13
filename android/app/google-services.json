@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1061569228105",
+    "project_id": "keepnotesclone",
+    "storage_bucket": "keepnotesclone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061569228105:android:4ad0340962dd8290fefe98",
+        "android_client_info": {
+          "package_name": "com.example.google_keep_clone_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061569228105-d7jop8ti0jrkcka96efj716944cpun6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.google_keep_clone_application_1",
+            "certificate_hash": "92e14819362b744f838bf4d0a0742802fd0bdcf2"
+          }
+        },
+        {
+          "client_id": "1061569228105-89ag99jkqotqfcjs13h5h51vft2v8rag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdfs9XI3h4ditSqab5Rr65K0GmZPelo8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061569228105-89ag99jkqotqfcjs13h5h51vft2v8rag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
