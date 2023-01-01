@@ -1,16 +1,42 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:google_keep_clone_application_1/login.dart';
-import './home.dart';
-void main() {
-  runApp(const MyApp());
+import 'services/login_info.dart';
+import 'home.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+Future<void> main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+class MyApp extends StatefulWidget {
+
+
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+class _MyAppState extends State<MyApp> {
+  bool isLogIn = false;
+
+  getLoggedInState() async{
+    
+    await LocalDataSaver.getLogData().then((value){
+ 
+      setState(() {
+          isLogIn = value.toString() == "null";
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    
+    super.initState();
+        getLoggedInState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +44,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: isLogIn ? Login(): Home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
